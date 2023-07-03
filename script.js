@@ -100,3 +100,48 @@ if (hamburger === 3 && cola === 2 || fries ===3 && nuggets) {
     console.log('mi uxodim');
 }
 
+
+
+function showFirstMessage (text) {
+    console.log(text);
+    
+}
+
+showFirstMessage('Hello World!');
+
+function calc (a, b) {
+    return (a + b);
+}
+
+console.log(calc(5, 90));
+
+function ret() {
+    let num = 50;
+    return num;
+}
+
+const anotherNum = ret();
+console.log(anotherNum);
+
+
+const logger = function () {
+    console.log('Hello');
+};
+
+logger();
+
+const kalc = (a, b) => {return a + b};
+
+
+const usdCurr = 28;
+const eurCurr = 32;
+
+function convert (amount, curr) {
+    console.log(curr * amount);
+}
+
+convert(500, usdCurr);
+convert(500, eurCurr);
+
+
+
