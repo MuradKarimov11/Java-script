@@ -36,12 +36,16 @@
 
 4) Потренироваться и переписать цикл еще двумя способами*/
 
-
 'use strict';
 
-const numberOfFilms = +prompt('Сколько фильмов вы уже посмотрели?', '');
-
-console.log(numberOfFilms);
+let numberOfFilms;
+function start() {
+    numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
+    while (numberOfFilms == '' || numberOfFilms == null || isNaN(numberOfFilms)) {
+        numberOfFilms = prompt('Сколько фильмов вы уже посмотрели?', '');
+    }
+}
+start();
 
 const personalMovieDB = {
     count: numberOfFilms,
@@ -51,32 +55,54 @@ const personalMovieDB = {
     privat: false
 };
  
-for (let i = 0; i < 2; i++) {
-    const a = prompt('Один из последних просмотренных фильмов?', ''),
-          b = prompt('На сколько оцените его?', '');
+function rememberMyFilms () {
+    for (let i = 0; i < 2; i++) {
+        const a = prompt('Один из последних просмотренных фильмов?', ''),
+              b = prompt('На сколько оцените его?', '');
+        
+        if (a != null && b != null && a != '' && b != '' && a.length < 50) {
+            personalMovieDB.movies[a] = b; 
+            console.log('done');
+        } else {
+            console.log('error');
+            i--;
+        }   
+    }
+}
+
+rememberMyFilms();
+
+function detecPersonalLevel () {
+    if (personalMovieDB.count < 10) {
+        console.log("Просмотрено довольно мало фильмов");
     
-    if (a != null && b != null && a != '' && b != '' && a.length < 50) {
-        personalMovieDB.movies[a] = b; 
-        console.log('done');
+    } else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30){
+        console.log('Вы классический зритель')
+    } else if (personalMovieDB.count >= 30)  {
+        console.log("Вы киноман");
     } else {
-        console.log('error');
-        i--;
-    }   
+        console.log("Произошла ошибка");
+    }
 }
 
-if (personalMovieDB.count < 10) {
-    console.log("Просмотрено довольно мало фильмов");
+detecPersonalLevel();
 
-} else if (personalMovieDB.count >= 10 && personalMovieDB.count < 30){
-    console.log('Вы классический зритель')
-} else if (personalMovieDB.count >= 30)  {
-    console.log("Вы киноман");
-} else {
-    console.log("Произошла ошибка");
+function showMyDB (hidden) {
+    if (!hidden) {
+        console.log(personalMovieDB);
+    }
 }
 
-console.log(personalMovieDB);
+showMyDB(personalMovieDB.privat);
 
+function writeYourGenres () {
+    for  (let i = 1; i <= 3; i++) {
+        const genre = prompt("Ваш любимый жанр под номером ${номер по порядку}");
+        personalMovieDB.genres[i - 1] = genre;
+    }
+}
+
+writeYourGenres();
 
 
 
@@ -99,7 +125,6 @@ if (hamburger === 3 && cola === 2 || fries ===3 && nuggets) {
 } else {
     console.log('mi uxodim');
 }
-
 
 
 function showFirstMessage (text) {
@@ -131,17 +156,73 @@ const logger = function () {
 logger();
 
 const kalc = (a, b) => {return a + b};
-
-
 const usdCurr = 28;
 const eurCurr = 32;
+const discount = 0.9;
 
 function convert (amount, curr) {
-    console.log(curr * amount);
+
+    return curr * amount;
 }
 
-convert(500, usdCurr);
+function promotion(result) {
+    console.log(result * discount);
+}
+
+const res = convert(500, usdCurr);
+promotion(res);
+
 convert(500, eurCurr);
+
+function test() {
+    for (let i = 0; i < 5; i++) {
+        console.log(i);
+        if (i === 3) return
+    }
+    console.log('Done')
+}
+
+test();
+
+function doNothing () {};
+console.log(doNothing() === undefined);
+
+function sayHello(name) {
+    return `Привет, ${name}!`;
+}
+
+sayHello('Murad');
+
+
+
+// const str = "test";
+// const mes = [1, 3, 5, 6, 7];
+
+// console.log(str.length);
+// console.log(mes.length);
+// console.log(str[2] = 'd');
+// console.log(str.toUpperCase());
+
+
+// const big = 'MuraD';
+
+// console.log(big.toLowerCase());
+
+// const fruit = 'Some fruit';
+// console.log(fruit.indexOf("fruit"));
+
+// const logg = "Hello world";
+// console.log(logg.slice(6));
+
+
+// const mum = 12.2;
+
+// console.log(Math.round(mum));
+
+// const bas = '12.2px';
+// console.log(parseInt(bas));
+// console.log(parseFloat(bas));
+
 
 
 
